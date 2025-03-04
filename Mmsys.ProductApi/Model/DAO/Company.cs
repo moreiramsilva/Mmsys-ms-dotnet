@@ -8,7 +8,7 @@ namespace Mmsys.ProductManagementApi.Model.DAO
     public class Company : BaseEntity
     {
         [Column("email")]
-        [StringLength(250)]
+        [StringLength(50)]
         [Required]
         public string? Email { get; set; }
 
@@ -18,7 +18,6 @@ namespace Mmsys.ProductManagementApi.Model.DAO
         public string? Name { get; set; }
 
         [Column("description")]
-        [Required]
         [StringLength(250)]
         public decimal Description { get; set; }
 

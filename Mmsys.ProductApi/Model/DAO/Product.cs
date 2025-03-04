@@ -24,14 +24,15 @@ namespace Mmsys.ProductManagementApi.Model.DAO
         [Column("type")]
         [Required]
         [StringLength(1)]
-        public string? Type { get; set; }
+        public char Type { get; set; }
 
         [Column("quantity")]
         [Required]
         [Range(0, 999999)]
         public int Quantity { get; set; }
 
-        [Column("companyId")]
+        [Column("company_id")]
+        [Required]
         public long CompanyId { get; set; }
 
         [Column("image_url")]

@@ -7,35 +7,42 @@ namespace Mmsys.ProductManagementApi.Model.DAO
     [Table("person")]
     public class Person : BaseEntity
     {
-        [Column("description")]
-        [StringLength(250)]
-        public string? Description { get; set; }
-
         [Column("name")]
         [StringLength(100)]
         [Required]
         public string? Name { get; set; }
 
-        [Column("price")]
-        [Required]
-        [Range(0, 999999)]
-        public decimal Price { get; set; }
+        [Column("cpf_cnpj")]
+        [StringLength(14)]
+        public string? CpfCnpj { get; set; }
 
-        [Column("type")]
+        [Column("person_type")]
+        [StringLength(1)]
+        public char PersonType { get; set; }
+
+        [Column("registration_type")]
         [Required]
         [StringLength(1)]
-        public string? Type { get; set; }
+        public char RegistrationType { get; set; }
 
-        [Column("quantity")]
-        [Required]
-        [Range(0, 999999)]
-        public int Quantity { get; set; }
+        [Column("phone")]
+        [StringLength(25)]
+        public string? Phone { get; set; }
 
-        [Column("companyId")]
-        public long CompanyId { get; set; }
+        [Column("email")]
+        [StringLength(50)]
+        public string? Email { get; set; }
 
-        [Column("image_url")]
+        [Column("address")]
         [StringLength(250)]
-        public string? Image { get; set; }
+        public string? Address { get; set; }
+
+        [Column("description")]
+        [StringLength(250)]
+        public long Description { get; set; }
+
+        [Column("company_id")]
+        [Required]
+        public long CompanyId { get; set; }
     }
 }

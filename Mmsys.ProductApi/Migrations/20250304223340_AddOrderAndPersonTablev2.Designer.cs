@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mmsys.ProductManagementApi.Model.Context;
 
@@ -10,9 +11,10 @@ using Mmsys.ProductManagementApi.Model.Context;
 namespace Mmsys.ProductManagementApi.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    partial class MySQLContextModelSnapshot : ModelSnapshot
+    [Migration("20250304223340_AddOrderAndPersonTablev2")]
+    partial class AddOrderAndPersonTablev2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,8 +40,8 @@ namespace Mmsys.ProductManagementApi.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)")
                         .HasColumnName("email");
 
                     b.Property<string>("Name")
@@ -100,12 +102,13 @@ namespace Mmsys.ProductManagementApi.Migrations
                         .HasColumnName("company_id");
 
                     b.Property<string>("CpfCnpj")
+                        .IsRequired()
                         .HasMaxLength(14)
                         .HasColumnType("varchar(14)")
                         .HasColumnName("cpf_cnpj");
 
                     b.Property<long>("Description")
-                        .HasMaxLength(250)
+                        .HasMaxLength(500)
                         .HasColumnType("bigint")
                         .HasColumnName("description");
 
@@ -113,6 +116,11 @@ namespace Mmsys.ProductManagementApi.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
                         .HasColumnName("email");
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)")
+                        .HasColumnName("image_url");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -127,6 +135,7 @@ namespace Mmsys.ProductManagementApi.Migrations
                         .HasColumnName("person_type");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("varchar(25)")
                         .HasColumnName("phone");
@@ -169,6 +178,9 @@ namespace Mmsys.ProductManagementApi.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("name");
 
+                    b.Property<long?>("OrderId")
+                        .HasColumnType("bigint");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(65,30)")
                         .HasColumnName("price");
@@ -185,31 +197,21 @@ namespace Mmsys.ProductManagementApi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrderId");
+
                     b.ToTable("product");
                 });
 
-            modelBuilder.Entity("Mmsys.ProductManagementApi.Model.DAO.Sales", b =>
+            modelBuilder.Entity("Mmsys.ProductManagementApi.Model.DAO.Product", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasColumnName("Id");
+                    b.HasOne("Mmsys.ProductManagementApi.Model.DAO.Order", null)
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId");
+                });
 
-                    b.Property<long>("CompanyId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("company_id");
-
-                    b.Property<long>("OrderId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("order_id");
-
-                    b.Property<long>("PersonId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("product_id");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("sales");
+            modelBuilder.Entity("Mmsys.ProductManagementApi.Model.DAO.Order", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

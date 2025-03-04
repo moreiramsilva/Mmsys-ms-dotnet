@@ -9,7 +9,7 @@
         public decimal Price { get; set; } 
         public string? Type { get; set; }
         public int Quantity { get; set; }
-        public CompanyDTO? CompanyId { get; set; }
+        public CompanyDTO? Company { get; set; }
         public string? Image { get; set; }
     }
 }

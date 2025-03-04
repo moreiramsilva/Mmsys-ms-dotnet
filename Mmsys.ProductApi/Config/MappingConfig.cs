@@ -19,6 +19,10 @@ namespace Mmsys.ProductManagementApi.Config
                 <CompanyDTO, Company>();
                 config.CreateMap
                 <Company, CompanyDTO>();
+                config.CreateMap
+                <OrderDTO, Order>();
+                config.CreateMap
+                <PersonDTO, Person>();
             } 
             ); 
 
