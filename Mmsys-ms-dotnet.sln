@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{9C89C4CB-F467-432E-A879-3D15503D8A7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{90D82FD8-CBE6-490A-A31F-E6E36F8C2051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmsys.Web", "Mmsys.Web\Mmsys.Web.csproj", "{12FF5D2A-2DD1-41DB-85F6-07C8498D87CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmsys.ProductManagementApi", "Mmsys.ProductApi\Mmsys.ProductManagementApi.csproj", "{125EFCAF-DA56-42AC-BA9A-623E32BBC500}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FF5D2A-2DD1-41DB-85F6-07C8498D87CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FF5D2A-2DD1-41DB-85F6-07C8498D87CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FF5D2A-2DD1-41DB-85F6-07C8498D87CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FF5D2A-2DD1-41DB-85F6-07C8498D87CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125EFCAF-DA56-42AC-BA9A-623E32BBC500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125EFCAF-DA56-42AC-BA9A-623E32BBC500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125EFCAF-DA56-42AC-BA9A-623E32BBC500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125EFCAF-DA56-42AC-BA9A-623E32BBC500}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12FF5D2A-2DD1-41DB-85F6-07C8498D87CE} = {9C89C4CB-F467-432E-A879-3D15503D8A7E}
+		{125EFCAF-DA56-42AC-BA9A-623E32BBC500} = {90D82FD8-CBE6-490A-A31F-E6E36F8C2051}
+	EndGlobalSection
+EndGlobal
