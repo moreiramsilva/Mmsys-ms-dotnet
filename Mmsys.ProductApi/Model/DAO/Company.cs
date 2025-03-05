@@ -24,5 +24,10 @@ namespace Mmsys.ProductManagementApi.Model.DAO
         [Column("company_image_url")]
         [StringLength(250)]
         public string? CompanyImage { get; set; }
+
+        public static explicit operator Company(Task<Company?> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

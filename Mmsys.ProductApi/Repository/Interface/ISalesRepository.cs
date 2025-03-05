@@ -5,9 +5,9 @@ namespace Mmsys.ProductManagementApi.Repository.Interface
     public interface ISalesRepository
     {
         Task<IEnumerable<SalesDTO>> FindAll();
-        Task<Task<IEnumerable<SalesDTO>>> FindById();
-        Task<IEnumerable<SalesDTO>> Create(SalesDTO sales);
-        Task<IEnumerable<SalesDTO>> Update(SalesDTO sales);
-        Task<bool> Delete(long id);
+        Task<SalesDTO> FindById(long Id);
+        Task<SalesDTO> Create(SalesDTO sales);
+        Task<SalesDTO> Update(SalesDTO sales);
+        Task<bool> Delete(long Id);
     }
 }

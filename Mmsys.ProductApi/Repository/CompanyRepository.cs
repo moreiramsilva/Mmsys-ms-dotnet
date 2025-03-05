@@ -1,33 +1,63 @@
-﻿using Mmsys.ProductManagementApi.DTO;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Mmsys.ProductManagementApi.DTO;
+using Mmsys.ProductManagementApi.Model.DAO;
+using Mmsys.ProductManagementApi.Model.Context;
 using Mmsys.ProductManagementApi.Repository.Interface;
 
 namespace Mmsys.ProductManagementApi.Repository
 {
     public class CompanyRepository : ICompanyRepository
     {
-        Task<IEnumerable<CompanyDTO>> ICompanyRepository.Create(CompanyDTO companyDTO)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly MySQLContext _context;
+        private IMapper _mapper;
 
-        Task<bool> ICompanyRepository.Delete(long id)
+        public CompanyRepository(MySQLContext context, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _mapper = mapper;
         }
-
-        Task<IEnumerable<CompanyDTO>> ICompanyRepository.FindAll()
+        async Task<CompanyDTO> ICompanyRepository.Create(CompanyDTO companyDTO)
         {
-            throw new NotImplementedException();
+            Company company = _mapper.Map<Company>(companyDTO);
+            _context.Add(company);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<CompanyDTO>(company);
         }
-
-        Task<Task<IEnumerable<CompanyDTO>>> ICompanyRepository.FindById()
+        async Task<bool> ICompanyRepository.Delete(long Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Company company = await _context.Companys.Where(p => p.Id == Id).FirstOrDefaultAsync();
+                if (company == null)
+                {
+                    return false;
+                }
+                _context.Remove(company);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
-
-        Task<IEnumerable<CompanyDTO>> ICompanyRepository.Update(CompanyDTO companyDTO)
+        async Task<IEnumerable<CompanyDTO>> ICompanyRepository.FindAll()
         {
-            throw new NotImplementedException();
+            List<Company> company = await _context.Companys.ToListAsync();
+            return _mapper.Map<List<CompanyDTO>>(company);
+        }
+        async Task<CompanyDTO> ICompanyRepository.FindById(long Id)
+        {
+            Company company = await _context.Companys.Where(p => p.Id == Id).FirstOrDefaultAsync();
+            return _mapper.Map<CompanyDTO>(company);
+        }
+        async Task<CompanyDTO> ICompanyRepository.Update(CompanyDTO companyDTO)
+        {
+            Company company = _mapper.Map<Company>(companyDTO);
+            _context.Companys.Update(company);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<CompanyDTO>(company);
         }
     }
 }

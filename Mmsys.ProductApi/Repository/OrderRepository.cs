@@ -1,11 +1,21 @@
-﻿using Mmsys.ProductManagementApi.DTO;
+﻿using AutoMapper;
+using Mmsys.ProductManagementApi.DTO;
+using Mmsys.ProductManagementApi.Model.Context;
 using Mmsys.ProductManagementApi.Repository.Interface;
 
 namespace Mmsys.ProductManagementApi.Repository
 {
     public class OrderRepository : IOrderRepository
     {
-        Task<IEnumerable<OrderDTO>> IOrderRepository.Create(OrderDTO order)
+        private readonly MySQLContext _context;
+        private IMapper _mapper;
+
+        public OrderRepository(MySQLContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+        Task<OrderDTO> IOrderRepository.Create(OrderDTO order)
         {
             throw new NotImplementedException();
         }
@@ -20,12 +30,12 @@ namespace Mmsys.ProductManagementApi.Repository
             throw new NotImplementedException();
         }
 
-        Task<Task<IEnumerable<OrderDTO>>> IOrderRepository.FindById()
+        Task<OrderDTO> IOrderRepository.FindById(long Id)
         {
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<OrderDTO>> IOrderRepository.Update(OrderDTO order)
+        Task<OrderDTO> IOrderRepository.Update(OrderDTO order)
         {
             throw new NotImplementedException();
         }

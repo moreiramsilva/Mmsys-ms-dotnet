@@ -5,9 +5,9 @@ namespace Mmsys.ProductManagementApi.Repository.Interface
     public interface IPersonRepository
     {
         Task<IEnumerable<PersonDTO>> FindAll();
-        Task<Task<IEnumerable<PersonDTO>>> FindById();
-        Task<IEnumerable<PersonDTO>> Create(PersonDTO person);
-        Task<IEnumerable<PersonDTO>> Update(PersonDTO person);
-        Task<bool> Delete(long id);
+        Task<PersonDTO> FindById(long Id);
+        Task<PersonDTO> Create(PersonDTO person);
+        Task<PersonDTO> Update(PersonDTO person);
+        Task<bool> Delete(long Id);
     }
 }

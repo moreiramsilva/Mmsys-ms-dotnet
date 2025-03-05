@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Mmsys.ProductManagementApi.Config;
 using Mmsys.ProductManagementApi.Model.Context;
+using Mmsys.ProductManagementApi.Repository;
+using Mmsys.ProductManagementApi.Repository.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,13 @@ IMapper mapper = MappingConfig.RegistrerMaps().CreateMapper();
 
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<ISalesRepository, SalesRepository>();
+
 
 builder.Services.AddControllers();
 
