@@ -61,7 +61,6 @@ Esta aplicação fornece uma API RESTful para criar e gerenciar ordens de servi�
 ## Configuração
 
 * **`appsettings.json`:** Contém configurações da aplicação, incluindo a connection string do banco de dados (recomenda-se o uso de UserSecrets para desenvolvimento local).
-* **User Secrets:** Para armazenar informações confidenciais durante o desenvolvimento.
 
 ## Contribuição
 
